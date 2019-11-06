@@ -1,21 +1,23 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
+import UserCard from './components/userCard';
 
 class App extends React.Component {
   state = {
-    users: [],
-    usersText: ''
+    users: {},
+    usersText: ""
   };
+  
 
   componentDidMount() {
     axios
     .get('https://api.github.com/users/panamajake86')
       .then(res => {
-        console.log(res);
+        console.log('didMount', res);
         this.setState({
-          users: res.data
-        })
+          users: res
+        });
       })
       .catch(err => {
         console.log(err)
@@ -23,16 +25,10 @@ class App extends React.Component {
   };
 
   render() {
+    console.log('render', this.state.users.data);
     return (
       <div className="App">
-        {/* <img src={} alt={} /> */}
-        <h1>Name: {this.state.name}</h1>
-        <h3>Username: {this.state.login}</h3>
-        <p>Location: {this.state.location}</p>
-        <p>Profile: {this.state.html_url}</p>
-        <p>Followers: {this.state.followers}</p>
-        <p>Following: {this.state.following}</p>
-        <p>Bio: {this.state.bio}</p>
+        <UserCard props={this.state.users.data} />
       </div>
     );
   }
