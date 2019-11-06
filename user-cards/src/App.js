@@ -27,7 +27,7 @@ class App extends React.Component {
       axios
     .get('https://api.github.com/users/panamajake86/followers')
       .then(res => {
-        console.log('didMount', res);
+        console.log('didMount2', res);
         this.setState({
           followers: res.data
         });
@@ -38,7 +38,7 @@ class App extends React.Component {
   };
 
   render() {
-    console.log('render', this.state.users)
+    console.log('render', this.state.followers)
     return (
       <div className="app">
       <div className="user">
@@ -51,19 +51,13 @@ class App extends React.Component {
         <p>{`Following: ${this.state.users.following}`}</p>
         <p>{`Bio: ${this.state.users.bio}`}</p>
       </div>
-      
-      {
-        this.state.followers.map(follow => {
-        <div className="followers">
-          <img src={this.state.followers.avatar_url} />
-          <h1>{`Name: ${this.state.followers.name}`}</h1>
-          <h3>{`Username: ${this.state.followers.login}`}</h3>
-          <p>{`Location: ${this.state.followers.location}`}</p>
-          <p>Profile: <a href={this.state.followers.html_url}>{this.state.followers.html_url}</a></p>
+      {this.state.followers.map(follow => (
+        <div className="followers" key={follow}>
+          <img src={follow.avatar_url} />
+          <h1>{`Username: ${follow.login}`}</h1>
+          <h3>Profile: <a href={follow.html_url}>{follow.html_url}</a></h3>
         </div>
-        })
-      }
-      
+        ))}
       </div>
     );
   }
