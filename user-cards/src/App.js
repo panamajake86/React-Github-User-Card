@@ -40,17 +40,23 @@ class App extends React.Component {
   render() {
     console.log('render', this.state.followers)
     return (
-      <div className="app">
+      <div className="App">
+        <span>User</span>
       <div className="user">
-        <img src={this.state.users.avatar_url} />
-        <h1>{`Name: ${this.state.users.name}`}</h1>
-        <h3>{`Username: ${this.state.users.login}`}</h3>
-        <p>{`Location: ${this.state.users.location}`}</p>
-        <p>Profile: <a href={this.state.users.html_url}>{this.state.users.html_url}</a></p>
-        <p>{`Followers: ${this.state.users.followers}`}</p>
-        <p>{`Following: ${this.state.users.following}`}</p>
-        <p>{`Bio: ${this.state.users.bio}`}</p>
+        <div className="main">
+          <img src={this.state.users.avatar_url} />
+          <h1>{`Name: ${this.state.users.name}`}</h1>
+        </div>
+        <div className="sub">
+          <h3>{`Username: ${this.state.users.login}`}</h3>
+          <p>{`Location: ${this.state.users.location}`}</p>
+          <p>Profile: <a href={this.state.users.html_url}>{this.state.users.html_url}</a></p>
+          <p>{`Followers: ${this.state.users.followers}`}</p>
+          <p>{`Following: ${this.state.users.following}`}</p>
+          <p>{`Bio: ${this.state.users.bio}`}</p>
+        </div>
       </div>
+      <span>Followers</span>
       {this.state.followers.map(follow => (
         <div className="followers" key={follow}>
           <img src={follow.avatar_url} />

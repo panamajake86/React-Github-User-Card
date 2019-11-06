@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .App-logo {
@@ -19,4 +22,30 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+.user {
+  width: 60%;
+  border: 1px black solid;
+  margin: 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.followers {
+  width: 60%;
+  border: 1px black solid;
+  margin: 20px;
+  padding: 10px;
+}
+
+img {
+  width: 300px;
+}
+
+span {
+  font-size: 30pt;
+  font-weight: bold;
 }
